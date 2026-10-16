@@ -2,6 +2,8 @@ package collections.binarytree;
 
 import java.util.Scanner;
 
+import java.util.Stack;
+
 public class BinaryTree {
 
 	//nodes 
@@ -67,6 +69,20 @@ public class BinaryTree {
 		printUsingPreorder(root.leftChild);
 		printUsingPreorder(root.rightChild);
 
+	}
+	
+	public void printUsingPreorderIterative(BT root) {
+		Stack<BT> stack = new Stack<>();
+		BT Current=root;
+		while(Current != null || stack.isEmpty()) {
+              while(Current !=null) {
+            	  stack.push(Current);
+            	  Current=Current.leftChild;
+              }			
+              Current=stack.pop();
+              System.out.println("Data"+Current.data);
+              Current=Current.rightChild;
+		}
 	}
 
 	//printing using inorder
