@@ -1,18 +1,18 @@
 package Day6;
 
 public class DoublyLinkedList {
-	class Node {
-		int data;
-		Node next;
-		Node prev;
-
-		public Node(int element) {
-			data = element;
-			next = null;
-			prev = null;
-
-		}
-	}
+//	class Node {
+//		int data;
+//		Node next;
+//		Node prev;
+//
+//		public Node(int element) {
+//			data = element;
+//			next = null;
+//			prev = null;
+//
+//		}
+//	}
 
 	Node head;
 
@@ -59,6 +59,12 @@ public class DoublyLinkedList {
 
 			current = current.next;
 		}
+	}
+	
+	
+	
+	public void reverse(Node head ) {
+		
 	}
 
 	public void display() {
