@@ -3,14 +3,15 @@ package Day6;
 import java.util.Scanner;
 
 public class Program {
+	
+	
+	
 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner (System.in);
 		
-		/*
 		DoublyLinkedList list1 = new DoublyLinkedList();
-		
 		  list1.insert(9);
 		   list1.insert(7);	
 		   list1.display(); // 7 9
@@ -18,8 +19,11 @@ public class Program {
 		   list1.insert(6);
 		   list1.display(); //2 6 7 9
 		
-		*/
+		   
+		   
 		
+		
+		/*
 		System.out.println("Enter no of operator and operand");
 		int n = sc.nextInt();
 		System.out.println("Enter expersion to evaluate ");
@@ -35,6 +39,7 @@ public class Program {
 		
 		System.out.println(result);
 		
+		*/
 	}
 
 }
