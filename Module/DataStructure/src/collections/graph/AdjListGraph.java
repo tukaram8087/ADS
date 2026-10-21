@@ -1,7 +1,9 @@
 package collections.graph;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class AdjListGraph implements Graph {
 	class EdgeInfo {
@@ -20,7 +22,6 @@ public class AdjListGraph implements Graph {
 
 	public AdjListGraph(int n, boolean isDirected) {
 		this.isDirected = isDirected;
-		
 		vertexCount = n;
 		
 		adjList = new ArrayList<>(vertexCount);
@@ -61,20 +62,64 @@ public class AdjListGraph implements Graph {
 	@Override
 	public void printDFS(int startVertex) {
 		boolean[] isVisited = new boolean[vertexCount];
-		for (int i = 0; i < vertexCount; ++i) {
-			isVisited[i] = false;
-		}
-		
 		dfsHelper(startVertex, isVisited);
 		System.out.println("");
 	}
 
 	@Override
 	public void printBFS(int startVertex) {
-		// TODO: Assignment
+		boolean[] isVisited = new boolean[vertexCount];
+		Queue<Integer> queue = new LinkedList<>();
+		
+		isVisited[startVertex] = true;
+		queue.offer(startVertex);
+		
+		while (!queue.isEmpty()) {
+			int curr = queue.poll();
+			System.out.print(curr + " ");
+			
+			for (EdgeInfo edgeInfo : adjList.get(curr)) {
+				if (!isVisited[edgeInfo.adjVertex]) {
+					isVisited[edgeInfo.adjVertex] = true;
+					queue.offer(edgeInfo.adjVertex);
+				}
+			}
+		}
+		System.out.println("");
 	}
 
 	@Override
 	public void dijkstraShortestPath(int startVertex, int destVertex) {
+	}
+	public boolean isConnected() {
+	    if (vertexCount <= 0) return true;
+	    boolean[] isVisited = new boolean[vertexCount];
+	    dfsCountHelper(0, isVisited);
+	    for (boolean visited : isVisited) {
+	        if (!visited) return false;
+	    }
+	    return true;
+	}
+
+	public int connectedComponentCount() {
+	    if (vertexCount <= 0) return 0;
+	    boolean[] isVisited = new boolean[vertexCount];
+	    int count = 0;
+	    for (int i = 0; i < vertexCount; i++) {
+	        if (!isVisited[i]) {
+	            count++;
+	            dfsCountHelper(i, isVisited);
+	        }
+	    }
+	    return count;
+	}
+
+	private void dfsCountHelper(int startVertex, boolean[] isVisited) {
+	    isVisited[startVertex] = true;
+	    for (EdgeInfo edgeInfo : adjList.get(startVertex)) {
+	        if (!isVisited[edgeInfo.adjVertex]) {
+	            dfsCountHelper(edgeInfo.adjVertex, isVisited);
+	        }
+	    }
 	}
 }
