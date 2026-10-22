@@ -39,5 +39,6 @@ public class Program {
 
         System.out.println("AdjacencyMatrix isConnected: " + matrixGraph.isConnected());
         System.out.println("AdjacencyMatrix connectedComponentCount: " + matrixGraph.connectedComponentCount());
-    }
-}
+        
+    
+}}
